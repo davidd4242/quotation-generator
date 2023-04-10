@@ -30,17 +30,23 @@ generateExcel.addEventListener('click', () => {
 });
 
 generatePdf.addEventListener('click', () => {
-    const doc = new jsPDF('p', 'pt', 'a4');
-    doc.autoTable({
-        html: '#quoteTable',
-        startY: 60,
-        headStyles: { fillColor: [242, 242, 242] },
-        theme: 'grid',
-        styles: { cellPadding: 5 },
-        columnStyles: {
-            0: { cellWidth: 'auto' },
-            1: { cellWidth: 'auto' },
-        },
-    });
-    doc.output('save', '报价单.pdf');
+    const quoteTableClone = quoteTable.cloneNode(true);
+    const container = document.createElement('div');
+    container.appendChild(quoteTableClone);
+    container.style.display = 'none';
+    document.body.appendChild(container);
+
+    const opt = {
+        margin: [15, 5],
+        filename: '报价单.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    };
+
+    html2pdf().set(opt).from(container).save();
+
+    setTimeout(() => {
+        document.body.removeChild(container);
+    }, 500);
 });
