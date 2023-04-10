@@ -42,5 +42,5 @@ generatePdf.addEventListener('click', () => {
             1: { cellWidth: 'auto' },
         },
     });
-    doc.save('报价单.pdf');
+    doc.output('save', '报价单.pdf');
 });
