@@ -34,8 +34,11 @@ generatePdf.addEventListener('click', () => {
     const tempTable = document.createElement('table');
     tempTable.appendChild(quoteTableClone.querySelector('thead').cloneNode(true));
     tempTable.appendChild(quoteTableClone.querySelector('tbody').cloneNode(true));
-    tempTable.style.borderCollapse = 'collapse';
-    tempTable.style.width = '100%';
+    tempTable.setAttribute('style', 'border-collapse: collapse; width: 100%;');
+    
+    Array.from(tempTable.querySelectorAll('th, td')).forEach(cell => {
+        cell.setAttribute('style', 'border: 1px solid #dee2e6; padding: 15px;');
+    });
 
     const container = document.createElement('div');
     container.appendChild(tempTable);
