@@ -22,15 +22,14 @@ quoteForm.addEventListener('submit', (e) => {
     quoteForm.reset();
 });
 
-    //...
-    generateExcel.addEventListener('click', () => {
-        const wb = XLSX.utils.book_new();
-        const ws = XLSX.utils.table_to_sheet(quoteTable);
-        XLSX.utils.book_append_sheet(wb, ws, '报价单');
-        XLSX.writeFile(wb, '报价单.xlsx');
-    });
+generateExcel.addEventListener('click', () => {
+    const wb = XLSX.utils.book_new();
+    const ws = XLSX.utils.table_to_sheet(quoteTable);
+    XLSX.utils.book_append_sheet(wb, ws, '报价单');
+    XLSX.writeFile(wb, '报价单.xlsx');
+});
 
-    generatePdf.addEventListener('click', () => {
+generatePdf.addEventListener('click', () => {
     const doc = new jsPDF({
         orientation: 'portrait',
         unit: 'pt',
