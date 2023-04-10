@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -10,17 +8,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
     <script src="https://unpkg.com/jspdf-autotable@3.5.23/dist/jspdf.plugin.autotable.min.js"></script>
-
 </head>
-
 <body>
-    <h1>报价单生成器</h1>
     <div class="container">
+        <h1>报价单生成器</h1>
         <form id="quoteForm">
-            <label for="itemName">商品名称:</label>
-            <input type="text" id="itemName" required>
-            <label for="itemPrice">价格:</label>
-            <input type="number" id="itemPrice" step="0.01" required>
+            <input type="text" id="itemName" placeholder="商品名称" required>
+            <input type="number" id="itemPrice" placeholder="价格" required>
             <button type="submit">添加商品</button>
         </form>
         <table id="quoteTable">
@@ -29,11 +23,14 @@
                     <th>商品名称</th>
                     <th>价格</th>
                 </tr>
-            </thead>
-            <tbody></tbody>
+                        </thead>
+            <tbody>
+            </tbody>
         </table>
-        <button id="generateExcel">生成Excel</button>
-        <button id="generatePdf">生成PDF</button>
+        <div class="export-buttons">
+            <button id="generateExcel">生成Excel</button>
+            <button id="generatePdf">生成PDF</button>
+        </div>
     </div>
     <script src="scripts.js"></script>
 </body>
