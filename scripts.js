@@ -31,8 +31,14 @@ generateExcel.addEventListener('click', () => {
 
 generatePdf.addEventListener('click', () => {
     const quoteTableClone = quoteTable.cloneNode(true);
+    const tempTable = document.createElement('table');
+    tempTable.appendChild(quoteTableClone.querySelector('thead').cloneNode(true));
+    tempTable.appendChild(quoteTableClone.querySelector('tbody').cloneNode(true));
+    tempTable.style.borderCollapse = 'collapse';
+    tempTable.style.width = '100%';
+
     const container = document.createElement('div');
-    container.appendChild(quoteTableClone);
+    container.appendChild(tempTable);
     container.style.display = 'none';
     document.body.appendChild(container);
 
