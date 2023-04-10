@@ -31,17 +31,22 @@ quoteForm.addEventListener('submit', (e) => {
     });
 
     generatePdf.addEventListener('click', () => {
-        const doc = new jsPDF('p', 'pt', 'a4');
-        doc.autoTable({
-            html: '#quoteTable',
-            startY: 60,
-            headStyles: { fillColor: [242, 242, 242] },
-            theme: 'grid',
-            columnStyles: {
-                0: { cellWidth: 'auto' },
-                1: { cellWidth: 'auto' },
-            },
-        });
-        doc.save('报价单.pdf');
+    const doc = new jsPDF({
+        orientation: 'portrait',
+        unit: 'pt',
+        format: 'a4',
     });
 
+    doc.autoTable({
+        html: '#quoteTable',
+        startY: 60,
+        headStyles: { fillColor: [242, 242, 242] },
+        theme: 'grid',
+        columnStyles: {
+            0: { cellWidth: 'auto' },
+            1: { cellWidth: 'auto' },
+        },
+    });
+
+    doc.save('报价单.pdf');
+});
